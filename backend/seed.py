@@ -6,7 +6,7 @@ Usage:
     cd skillmatch/backend
     python seed.py
     python seed.py --api http://localhost:5000   (default)
-    python seed.py --api https://skillmatch-api-h5a7bmgsefegade0.westeurope-01.azurewebsites.net
+    python seed.py --api https://skillmatch-api.azurewebsites.net
 """
 
 import random
@@ -15,7 +15,7 @@ import argparse
 import sys
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--api', default='https://skillmatch-api-h5a7bmgsefegade0.westeurope-01.azurewebsites.net/', help='API base URL')
+parser.add_argument('--api', default='http://localhost:5000', help='API base URL')
 args = parser.parse_args()
 API = args.api.rstrip('/')
 
@@ -206,7 +206,7 @@ def make_candidate(i):
 
 # ── SEEDER ────────────────────────────────────────────────────────────────────
 
-def seed(n=10):
+def seed(n=100):
     print(f"🌱 Seeding {n} candidates to {API}\n")
     success = 0
     skipped = 0
@@ -247,4 +247,4 @@ def seed(n=10):
     print(f"\nDone! Open the Recruiter Portal and search for candidates.")
 
 if __name__ == '__main__':
-    seed(10)
+    seed(100)
